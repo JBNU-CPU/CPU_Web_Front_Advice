@@ -59,7 +59,7 @@ function Header() {
   const [aboutOpen, setAboutOpen] = useState(false);
   const [boardOpen, setBoardOpen] = useState(false);
   const [studyOpen, setStudyOpen] = useState(false);
-  const [relatedOpen, setRelatedOpen] = useState(false);
+  const [programsOpen, setProgramsOpen] = useState(false);
 
   return (
     <StyledHeader>
@@ -79,6 +79,9 @@ function Header() {
           className="item"
           onClick={() => {
             setAboutOpen(!aboutOpen);
+            setBoardOpen(false);
+            setStudyOpen(false);
+            setProgramsOpen(false);
           }}
         >
           About
@@ -97,15 +100,81 @@ function Header() {
             Activities
           </button>
         </ul>
-        <button className="item" onClick={() => {}}>
+        <button
+          className="item"
+          onClick={() => {
+            setAboutOpen(false);
+            setBoardOpen(!boardOpen);
+            setStudyOpen(false);
+            setProgramsOpen(false);
+          }}
+        >
           Board
         </button>
-        <button className="item" onClick={() => {}}>
+        <ul
+          className="innerNav"
+          style={{ display: boardOpen ? "inline" : "none" }}
+        >
+          <button className="item" onClick={() => {}}>
+            Ask anything
+          </button>
+          <button className="item" onClick={() => {}}>
+            Hobbies
+          </button>
+          <button className="item" onClick={() => {}}>
+            Small talk
+          </button>
+        </ul>
+        <button
+          className="item"
+          onClick={() => {
+            setAboutOpen(false);
+            setBoardOpen(false);
+            setStudyOpen(!studyOpen);
+            setProgramsOpen(false);
+          }}
+        >
           Study
         </button>
-        <button className="item" onClick={() => {}}>
-          Related
+        <ul
+          className="innerNav"
+          style={{ display: studyOpen ? "inline" : "none" }}
+        >
+          <button className="item" onClick={() => {}}>
+            Web study
+          </button>
+          <button className="item" onClick={() => {}}>
+            AI study
+          </button>
+          <button className="item" onClick={() => {}}>
+            Game study
+          </button>
+        </ul>
+        <button
+          className="item"
+          onClick={() => {
+            setAboutOpen(false);
+            setBoardOpen(false);
+            setStudyOpen(false);
+            setProgramsOpen(!programsOpen);
+          }}
+        >
+          Programs
         </button>
+        <ul
+          className="innerNav"
+          style={{ display: programsOpen ? "inline" : "none" }}
+        >
+          <button className="item" onClick={() => {}}>
+            Let's find friends
+          </button>
+          <button className="item" onClick={() => {}}>
+            CPU MT
+          </button>
+          <button className="item" onClick={() => {}}>
+            CPU DAY
+          </button>
+        </ul>
       </ul>
     </StyledHeader>
   );
