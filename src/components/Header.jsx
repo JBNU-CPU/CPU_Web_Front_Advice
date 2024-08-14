@@ -1,58 +1,112 @@
 import styled from "styled-components";
+import logo from "../assets/CPU_logo.png";
+import { useState } from "react";
+import colors from "../constants/colors";
 
 const StyledHeader = styled.div`
-  height: 100px;
   display: flex;
-  justify-content: space-around;
-  h1 {
-    color: #486284;
-    flex: 1;
-    text-align: center;
-    margin: auto;
-  }
-  ul {
-    flex: 4;
+  justify-content: space-between;
+  .headerLeft {
     display: flex;
-    color: grey;
-    justify-content: space-between;
-    list-style-type: none;
-    margin: auto;
-  }
-  div {
-    margin: auto;
-    flex: 1.5;
-    display: flex;
-    justify-content: space-evenly;
-    height: 30px;
-    #joinBtn {
-      background: none;
-      border: none;
-      color: #486284;
+    img {
+      width: 70px;
     }
-    #loginBtn {
-      border: none;
-      background: #486284;
-      color: white;
-      border-radius: 5px;
+    h1 {
+      margin: auto;
+    }
+  }
+  button {
+    width: 70px;
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  .navBar {
+    display: flex;
+    list-style: none;
+    position: absolute;
+    background: ${colors.MAIN.GREEN};
+    right: 0;
+    width: 140px;
+    height: 100vh;
+    flex-direction: column;
+    align-items: end;
+    .X {
+      width: 40px;
+      color: ${colors.MAIN.LIGHT};
+    }
+    .item {
+      width: 180px;
+      padding: 10px;
+      border-bottom: 1px ridge ${colors.MAIN.LIGHT};
+      color: ${colors.MAIN.LIGHT};
+      font-size: 20px;
+      text-align: left;
+    }
+    .innerNav {
+      background: ${colors.MAIN.LIGHT};
+      button {
+        color: ${colors.MAIN.GREEN};
+      }
     }
   }
 `;
 
 function Header() {
+  const [navOpen, setNavOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const [boardOpen, setBoardOpen] = useState(false);
+  const [studyOpen, setStudyOpen] = useState(false);
+  const [relatedOpen, setRelatedOpen] = useState(false);
+
   return (
     <StyledHeader>
-      <h1>CPU</h1>
-      <ul>
-        <li>ABOUT CPU</li>
-        <li>STUDIES</li>
-        <li>ACTIVITIES</li>
-        <li>BOARD</li>
-        <li>APPLY</li>
-      </ul>
-      <div>
-        <button id="joinBtn">JOIN</button>
-        <button id="loginBtn">Login</button>
+      <div className="headerLeft">
+        <img src={logo} alt="logo" />
+        <h1>CPU of JBNU</h1>
       </div>
+      <button onClick={() => setNavOpen(true)}>=</button>
+      <ul
+        className="navBar"
+        style={{ visibility: navOpen ? "visible" : "hidden" }}
+      >
+        <button className="X" onClick={() => setNavOpen(false)}>
+          X
+        </button>
+        <button
+          className="item"
+          onClick={() => {
+            setAboutOpen(!aboutOpen);
+          }}
+        >
+          About
+        </button>
+        <ul
+          className="innerNav"
+          style={{ display: aboutOpen ? "inline" : "none" }}
+        >
+          <button className="item" onClick={() => {}}>
+            History
+          </button>
+          <button className="item" onClick={() => {}}>
+            Excecutives
+          </button>
+          <button className="item" onClick={() => {}}>
+            Activities
+          </button>
+        </ul>
+        <button className="item" onClick={() => {}}>
+          Board
+        </button>
+        <button className="item" onClick={() => {}}>
+          Study
+        </button>
+        <button className="item" onClick={() => {}}>
+          Related
+        </button>
+      </ul>
     </StyledHeader>
   );
 }

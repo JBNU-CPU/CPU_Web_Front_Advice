@@ -3,15 +3,18 @@ import Header from "./components/Header";
 import { RouterProvider } from "react-router-dom";
 import router from "./router";
 import styled from "styled-components";
+import colors from "./constants/colors";
 
 const StyledApp = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: ${colors.MAIN.DARK};
+  color: white;
 `;
 
 const StyledRapper = styled.div`
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 170px);
 `;
 
 function App() {
@@ -21,7 +24,7 @@ function App() {
       <StyledRapper>
         <RouterProvider router={router} />
       </StyledRapper>
-      <Footer />
+      <Footer className="Footer" />
     </StyledApp>
   );
 }

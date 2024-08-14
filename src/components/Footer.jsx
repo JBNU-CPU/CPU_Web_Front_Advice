@@ -2,16 +2,14 @@ import styled from "styled-components";
 
 const StyledFooter = styled.div`
   height: 100px;
-  background: blue;
-  h1 {
-    color: red;
-  }
+  align-content: center;
+  text-align: center;
 `;
 
 function Footer() {
   return (
     <StyledFooter>
-      <h1>Footer</h1>
+      <text>made with ❤️ by CPU web dev team</text>
     </StyledFooter>
   );
 }

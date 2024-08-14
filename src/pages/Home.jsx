@@ -1,5 +1,8 @@
+import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+
 function Home() {
-  return <div>home page</div>;
+  return <></>;
 }
 
 export default Home;
