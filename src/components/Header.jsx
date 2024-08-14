@@ -72,7 +72,16 @@ function Header() {
         className="navBar"
         style={{ visibility: navOpen ? "visible" : "hidden" }}
       >
-        <button className="X" onClick={() => setNavOpen(false)}>
+        <button
+          className="X"
+          onClick={() => {
+            setNavOpen(false);
+            setAboutOpen(false);
+            setBoardOpen(false);
+            setStudyOpen(false);
+            setProgramsOpen(false);
+          }}
+        >
           X
         </button>
         <button
