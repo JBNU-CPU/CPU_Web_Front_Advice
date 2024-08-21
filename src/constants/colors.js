@@ -1,7 +1,7 @@
 const colors = {
   MAIN: {
     DARK: "#272727",
-    GREEN: "#457D58",
+    GREEN: "#687D58",
     LIGHT: "#D9D9D9",
   },
 };

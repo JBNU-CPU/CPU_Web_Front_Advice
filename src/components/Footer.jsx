@@ -9,7 +9,7 @@ const StyledFooter = styled.div`
 function Footer() {
   return (
     <StyledFooter>
-      <text>made with ❤️ by CPU web dev team</text>
+      <text>made by CPU web dev team</text>
     </StyledFooter>
   );
 }

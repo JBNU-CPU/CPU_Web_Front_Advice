@@ -1,19 +1,28 @@
 import styled from "styled-components";
-import logo from "../assets/CPU_logo.png";
+import logo from "../assets/CPU_logo_white.png";
 import { useState } from "react";
 import colors from "../constants/colors";
+import { useNavigate } from "react-router-dom";
 
 const StyledHeader = styled.div`
   display: flex;
-  justify-content: space-between;
+  height: 90px;
   .headerLeft {
     display: flex;
+    cursor: pointer;
+    margin-left: 7px;
+    font-size: 20px;
     img {
       width: 70px;
     }
     h1 {
       margin: auto;
     }
+  }
+  .navBtn {
+    position: absolute;
+    top: 20px;
+    right: 10px;
   }
   button {
     width: 70px;
@@ -33,6 +42,7 @@ const StyledHeader = styled.div`
     height: 100vh;
     flex-direction: column;
     align-items: end;
+    z-index: 1;
     .X {
       width: 40px;
       color: ${colors.MAIN.LIGHT};
@@ -55,19 +65,31 @@ const StyledHeader = styled.div`
 `;
 
 function Header() {
+  const navigate = useNavigate();
   const [navOpen, setNavOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [boardOpen, setBoardOpen] = useState(false);
-  const [studyOpen, setStudyOpen] = useState(false);
   const [programsOpen, setProgramsOpen] = useState(false);
+
+  const handleHomeClick = async () => {
+    setNavOpen(false);
+    navigate("/");
+  };
+
+  const handleStudyClick = async () => {
+    setNavOpen(false);
+    navigate("/study");
+  };
 
   return (
     <StyledHeader>
-      <div className="headerLeft">
+      <div className="headerLeft" onClick={() => handleHomeClick()}>
         <img src={logo} alt="logo" />
         <h1>CPU of JBNU</h1>
       </div>
-      <button onClick={() => setNavOpen(true)}>=</button>
+      <button className="navBtn" onClick={() => setNavOpen(true)}>
+        =
+      </button>
       <ul
         className="navBar"
         style={{ visibility: navOpen ? "visible" : "hidden" }}
@@ -78,7 +100,6 @@ function Header() {
             setNavOpen(false);
             setAboutOpen(false);
             setBoardOpen(false);
-            setStudyOpen(false);
             setProgramsOpen(false);
           }}
         >
@@ -89,7 +110,6 @@ function Header() {
           onClick={() => {
             setAboutOpen(!aboutOpen);
             setBoardOpen(false);
-            setStudyOpen(false);
             setProgramsOpen(false);
           }}
         >
@@ -114,7 +134,6 @@ function Header() {
           onClick={() => {
             setAboutOpen(false);
             setBoardOpen(!boardOpen);
-            setStudyOpen(false);
             setProgramsOpen(false);
           }}
         >
@@ -139,32 +158,17 @@ function Header() {
           onClick={() => {
             setAboutOpen(false);
             setBoardOpen(false);
-            setStudyOpen(!studyOpen);
             setProgramsOpen(false);
+            handleStudyClick();
           }}
         >
           Study
         </button>
-        <ul
-          className="innerNav"
-          style={{ display: studyOpen ? "inline" : "none" }}
-        >
-          <button className="item" onClick={() => {}}>
-            Web study
-          </button>
-          <button className="item" onClick={() => {}}>
-            AI study
-          </button>
-          <button className="item" onClick={() => {}}>
-            Game study
-          </button>
-        </ul>
         <button
           className="item"
           onClick={() => {
             setAboutOpen(false);
             setBoardOpen(false);
-            setStudyOpen(false);
             setProgramsOpen(!programsOpen);
           }}
         >
